@@ -33,7 +33,7 @@ task :cruise => ['geminstaller'] do
   #   Rake::Task["test:integration"].invoke
   # end
   Rake::Task["test:units"].invoke
-  Rake::Task["test:functionals"].invoke
-  Rake::Task["test:integration"].invoke
+  # Rake::Task["test:functionals"].invoke
+  # Rake::Task["test:integration"].invoke
 
 end
