@@ -10,6 +10,7 @@ class BuilderIntegrationTest < ActiveSupport::TestCase
     end
   end
 
+  unless ENV['CC_BUILD_ARTIFACTS']
   def test_build_if_necessary
     with_project('passing_project', :revision => 2) do |project, sandbox|
       sandbox.new :file=> 'passing_project/cruise_config.rb', :with_contents => ' '
@@ -213,6 +214,7 @@ db-migrate
       assert build_log.include?(error_message),
           "#{error_message.inspect} not found in build log:\n#{build_log}"
     end
+  end
   end
 
   def fixture_repository_url
