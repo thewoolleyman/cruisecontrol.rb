@@ -82,9 +82,9 @@ namespace :test do
     t.libs << "test"
     t.pattern =  [
       # 'test/unit/cruise_control/*_test.rb',
-      # 'test/unit/f*_test.rb',
+      'test/unit/f*_test.rb',
       'test/unit/plugins/*_test.rb',
-      # 'test/unit/p*_test.rb',
+      'test/unit/p*_test.rb',
       # 'test/unit/r*_test.rb',
       # 'test/unit/s*_test.rb',
       ]
