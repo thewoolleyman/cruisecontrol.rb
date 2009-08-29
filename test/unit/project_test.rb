@@ -17,6 +17,7 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal PollingScheduler, @project.scheduler.class
   end
 
+  unless ENV['CC_BUILD_ARTIFACTS']
   def test_builds
     in_sandbox do |sandbox|
       @project.path = sandbox.root
@@ -735,6 +736,7 @@ class ProjectTest < ActiveSupport::TestCase
       assert_equal(SourceControl::Subversion, new_project.source_control.class)
       assert_equal(sandbox.root + "/myproject", new_project.path)
     end
+  end
   end
   
   private
