@@ -16,7 +16,6 @@ task :cruise => ['geminstaller'] do
   out = ENV['CC_BUILD_ARTIFACTS']
   mkdir_p out unless File.directory? out if out
 
-  Rcov is disabled for now, it hangs on some environments
   if RUBY_VERSION == '1.8.7'
     puts '!!!!!! Skipping rcov on Ruby 1.8.7'
     Rake::Task["test:units"].invoke
