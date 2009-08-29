@@ -87,7 +87,10 @@ namespace :test do
 
   Rake::TestTask.new(:functionals => "db:test:prepare") do |t|
     t.libs << "test"
-    t.pattern = 'test/functional/**/*_test.rb'
+    t.pattern =  [
+      'test/unit/**/a*_test.rb',
+      'test/unit/**/b*_test.rb',
+      ]
     t.verbose = true
   end
   Rake::Task['test:functionals'].comment = "Run the functional tests in test/functional"
