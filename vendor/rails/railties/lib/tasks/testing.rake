@@ -81,9 +81,12 @@ namespace :test do
   Rake::TestTask.new(:units => "db:test:prepare") do |t|
     t.libs << "test"
     t.pattern =  [
-      'test/unit/a*_test.rb',
-      'test/unit/b*_test.rb',
-      'test/unit/c*_test.rb',
+      'test/unit/cruise_control/*_test.rb',
+      'test/unit/f*_test.rb',
+      'test/unit/plugins/*_test.rb',
+      'test/unit/p*_test.rb',
+      'test/unit/r*_test.rb',
+      'test/unit/s*_test.rb',
       ]
     t.verbose = true
   end
