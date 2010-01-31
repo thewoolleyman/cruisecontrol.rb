@@ -55,6 +55,10 @@ Rails::Initializer.run do |config|
   config.after_initialize do
     require RAILS_ROOT + '/config/configuration'
   end
+
+  # Disable request forgery protection to support page caching
+  config.action_controller.allow_forgery_protection    = false
+
 end
 
 require RAILS_ROOT + '/lib/cruise_control/version'
@@ -65,5 +69,7 @@ require 'fileutils'
 # get rid of cached pages between runs
 FileUtils.rm_rf RAILS_ROOT + "/public/builds"
 FileUtils.rm_rf RAILS_ROOT + "/public/documentation"
+
+PageCacheExpirer.expire
 
 BuilderPlugin.load_all

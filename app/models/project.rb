@@ -1,6 +1,7 @@
 # A Project represents a particular CI build of a particular codebase. An instance is created 
 # each time a build is triggered and yielded back to be configured by cruise_config.rb.
 class Project
+  include ActionController::Caching::Pages
   attr_reader :name, :plugins, :build_command, :rake_task, :config_tracker, :path, :settings, :config_file_content, :error_message
   attr_accessor :source_control, :scheduler
   
@@ -391,6 +392,7 @@ class Project
     unless BuilderPlugin.known_event? event
       raise "You attempted to notify the project of the #{event} event, but the plugin architecture does not understand this event. Add a method to BuilderPlugin, and document it."
     end
+    PageCacheExpirer.expire
     
     errors = []
     results = @plugins.collect do |plugin| 

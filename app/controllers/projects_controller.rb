@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  
+  caches_page :index
+
   verify :params => "id", :only => [:show, :build, :code],
          :render => { :text => "Project not specified",
                       :status => 404 }
@@ -28,6 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def build
+    PageCacheExpirer.expire    
     render :text => 'Build requests are not allowed', :status => 403 and return if Configuration.disable_build_now
 
     @project = Project.find(params[:id])

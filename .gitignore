@@ -5,6 +5,8 @@ public/stylesheets/site.css
 public/documentation
 log/*
 tmp/**/*
+public/index.html
+public/projects.js
 cruisecontrol.iws
 public/builds
 *.iws
