@@ -1,5 +1,9 @@
 class ProjectsController < ApplicationController
   caches_page :index
+  caches_page '/index.html'
+  caches_page '/projects.js'
+  caches_page '/projects.rss'
+  caches_page '/XmlStatusReport.aspx'
 
   verify :params => "id", :only => [:show, :build, :code],
          :render => { :text => "Project not specified",
